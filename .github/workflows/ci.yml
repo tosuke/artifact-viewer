@@ -35,13 +35,17 @@ jobs:
     needs:
       - test
 
+    permissions:
+      actions: read
+      issues: write
+
     steps:
       - uses: actions/github-script@v6
         id: artifact-id
         with:
           result-encoding: string
           script: |
-            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+            const { data: { artifacts }} = await github.rest.actions.listWorkflowRunArtifacts({
               owner: context.repo.owner,
               repo: context.repo.repo,
               run_id: context.runId,
