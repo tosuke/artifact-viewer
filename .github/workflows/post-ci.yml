@@ -18,6 +18,7 @@ jobs:
         with:
           result-encoding: string
           script: |
+            console.log(context)
             const { data: { artifacts }} = await github.rest.actions.listWorkflowRunArtifacts({
               owner: context.repo.owner,
               repo: context.repo.repo,
