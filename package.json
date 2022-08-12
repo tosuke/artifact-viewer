@@ -10,7 +10,6 @@
     "test": "vitest",
     "build:fixture": "vite build src/fixture/src && cd src/fixture/src/dist && zip -r ../../test.zip ."
   },
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "pako": "2.0.4",
