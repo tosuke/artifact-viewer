@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "test": "vitest",
     "build:fixture": "vite build src/fixture/src && cd src/fixture/src/dist && zip -r ../../test.zip ."
   },
   "author": "",
