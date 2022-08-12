@@ -13,15 +13,37 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/github-script@v6
-        id: artifact-id
         with:
-          result-encoding: string
           script: |
+            console.log(context.payload.workflow_run)
+
             const { data: { artifacts }} = await github.rest.actions.listWorkflowRunArtifacts({
               owner: context.repo.owner,
               repo: context.repo.repo,
               run_id: context.payload.workflow_run.id,
             });
-            console.log(artifacts)
-            return ""
+
+            const artifact = artifacts.find(a => a.name === "coverage");
+            if (artifact == null) return;
+
+            const url = `https://artifact-viewer.vercel.app/${context.repo.owner}/${context.repo.repo}/${artifact.id}/`;
+
+            const body =
+              `<!-- artifact-comment -->
+              # Artifacts
+
+              |          |        |
+              | -------- | ------ |
+              | Coverage | ${url} |
+            `;
+
+            if (context.payload.workflow_run.event === "push") {
+              await github.rest.repos.createCommitComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: context.payload.workflow_run.head_sha,
+                body
+              });
+            }
