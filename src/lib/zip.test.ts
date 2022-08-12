@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test } from "vitest";
+import { beforeEach, describe, expect } from "vitest";
 import { readFile } from "node:fs/promises";
 
 import { ZipReader } from "./zip";
