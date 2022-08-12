@@ -1,0 +1,27 @@
+name: Post CI
+
+on:
+  workflow_run:
+    workflows:
+      - ci
+    types:
+      - completed
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - uses: actions/github-script@v6
+        id: artifact-id
+        with:
+          result-encoding: string
+          script: |
+            const { data: { artifacts }} = await github.rest.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId,
+            });
+            console.log(artifacts)
+            return ""
