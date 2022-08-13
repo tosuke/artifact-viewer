@@ -9,7 +9,7 @@ const handler = async (request: Request) => {
   const id = url.searchParams.get("id");
 
   return fetch(
-    `https://nightly.link/${owner}/${repo}/actions/artifacts/${id}/zip`
+    `https://nightly.link/${owner}/${repo}/actions/artifacts/${id}.zip`
   );
 };
 
