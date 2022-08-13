@@ -22,11 +22,17 @@ const routes: Routes<Response | undefined> = [
           id,
         });
 
-        const zipReq = new Request(`/api/resolve?${searchParams.toString()}`);
+        const zipReq = new Request(`/api/resolve?${searchParams.toString()}`, {
+          redirect: "follow",
+        });
         const cache = await sw.caches.open("v1");
-        let zipRes = await cache.match(zipReq);
-        if (zipRes == null) {
-          zipRes = await fetch(zipReq);
+        const cachedZipRes = await cache.match(zipReq);
+        const zipRes = cachedZipRes ?? (await fetch(zipReq));
+
+        if (
+          cachedZipRes == null &&
+          (zipRes.status === 200 || zipRes.status === 404)
+        ) {
           await cache.put(zipReq, zipRes.clone());
         }
 
@@ -34,7 +40,7 @@ const routes: Routes<Response | undefined> = [
           zipRes.status !== 200 ||
           zipRes.headers.get("content-type") !== "application/zip"
         ) {
-          return new Response("", { status: 404 });
+          return new Response("", { status: zipRes.status });
         }
 
         const zipBody = await zipRes.arrayBuffer();
