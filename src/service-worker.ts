@@ -1,5 +1,4 @@
 import Router, { type Routes } from "universal-router";
-import stubURL from "./fixture/test.zip?url";
 import { ZipReader } from "./lib/zip";
 
 const ext2mime: Record<string, string> = {
@@ -10,45 +9,82 @@ const ext2mime: Record<string, string> = {
 
 const routes: Routes<Response | undefined> = [
   {
-    path: "/test/:path*",
+    path: "/:owner/:repo/artifacts/:id/:path*",
     action: async (ctx, params) => {
       try {
-        if (ctx.path === "/test") {
-          return new Response("", {
-            status: 302,
-            headers: { location: "/test/" },
-          });
+        const owner = params.owner as string;
+        const repo = params.repo as string;
+        const id = params.id as string;
+
+        const searchParams = new URLSearchParams({
+          owner,
+          repo,
+          id,
+        });
+
+        const zipReq = new Request(`/api/resolve?${searchParams.toString()}`);
+        const cache = await sw.caches.open("v1");
+        let zipRes = await cache.match(zipReq);
+        if (zipRes == null) {
+          zipRes = await fetch(zipReq);
+          await cache.put(zipReq, zipRes.clone());
         }
 
-        const path =
-          (params.path as string[] | undefined)?.join("/") ?? "index.html";
-        const ext = path.split(".").pop() ?? "";
-        const mime = ext2mime[ext] || "application/octet-stream";
-
-        const zipRes = await fetch(stubURL);
         if (
-          zipRes.status !== 200 &&
+          zipRes.status !== 200 ||
           zipRes.headers.get("content-type") !== "application/zip"
         ) {
           return new Response("", { status: 404 });
         }
 
-        const body = await zipRes.arrayBuffer();
-        const reader = new ZipReader(new DataView(body));
+        const zipBody = await zipRes.arrayBuffer();
+        const reader = new ZipReader(new DataView(zipBody));
 
-        const file = reader.files.find((f) => {
-          return f.fileName === path;
+        const path =
+          (params.path as string[] | undefined)?.join("/") ?? "index.html";
+
+        if (params.path == null && !ctx.pathname.endsWith("/")) {
+          return new Response("", {
+            status: 302,
+            headers: { location: ctx.pathname + "/" },
+          });
+        }
+
+        let file = reader.files.find((f) => {
+          if (f.isDirectory) {
+            return f.fileName === path + "/";
+          } else {
+            return f.fileName === path;
+          }
         });
-        if (file == null || file.compressionSize === 0) {
+        if (file == null) {
           return new Response("", { status: 404 });
         }
+        if (file.isDirectory) {
+          if (ctx.pathname.endsWith("/")) {
+            file = reader.files.find(
+              (f) => f.fileName === path + "/index.html"
+            );
+            if (file == null) {
+              return new Response("", { status: 404 });
+            }
+          } else {
+            return new Response("", {
+              status: 302,
+              headers: { location: ctx.pathname + "/" },
+            });
+          }
+        }
+
+        const ext = file.fileName.split(".").pop() ?? "";
+        const mime = ext2mime[ext] || "application/octet-stream";
 
         return new Response(file.decompress(), {
           status: 200,
           headers: { "content-type": mime },
         });
-      } catch (e) {
-        console.error(e);
+      } catch (err: unknown) {
+        console.error(err);
         return new Response("", { status: 500 });
       }
     },
@@ -60,14 +96,10 @@ const router = new Router(routes);
 const sw = self as unknown as ServiceWorkerGlobalScope & typeof globalThis;
 
 sw.addEventListener("install", (ev) => {
-  // initialization
-  console.log("install");
   ev.waitUntil(sw.skipWaiting());
 });
 
 sw.addEventListener("activate", (ev) => {
-  console.log("activate");
-
   const navigationPreloadTask =
     sw.registration.navigationPreload?.disable() ?? Promise.resolve();
 
@@ -81,9 +113,7 @@ sw.addEventListener("activate", (ev) => {
 });
 
 sw.addEventListener("fetch", (ev) => {
-  console.log(ev.type, ev.request.url);
   const pathname = new URL(ev.request.url).pathname;
-  console.log(pathname);
 
   ev.respondWith(
     router

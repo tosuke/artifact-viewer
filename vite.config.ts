@@ -72,4 +72,12 @@ export default defineConfig({
     preact(),
     serviceWorkerPlugin(resolve(__dirname, "src/service-worker.ts")),
   ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://artifact-viewer.vercel.app",
+        changeOrigin: true,
+      },
+    },
+  },
 });
