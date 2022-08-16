@@ -9,7 +9,7 @@ specifiers:
   c8: 7.12.0
   edge-runtime: 1.1.0-beta.26
   esbuild: ^0.15.3
-  hono: ^2.0.8
+  hono: 2.0.8
   npm-run-all: 4.1.5
   pako: 2.0.4
   path-to-regexp: 6.2.1
