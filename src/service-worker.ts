@@ -30,17 +30,14 @@ const routes: Routes<Response | undefined> = [
         const zipRes = cachedZipRes ?? (await fetch(zipReq));
 
         if (
-          cachedZipRes == null &&
-          (zipRes.status === 200 || zipRes.status === 404)
-        ) {
-          await cache.put(zipReq, zipRes.clone());
-        }
-
-        if (
           zipRes.status !== 200 ||
           zipRes.headers.get("content-type") !== "application/zip"
         ) {
           return new Response("", { status: zipRes.status });
+        }
+
+        if (cachedZipRes == null) {
+          await cache.put(zipReq, zipRes.clone());
         }
 
         const zipBody = await zipRes.arrayBuffer();
@@ -83,7 +80,7 @@ const routes: Routes<Response | undefined> = [
         }
 
         const ext = file.fileName.split(".").pop() ?? "";
-        const mime = ext2mime[ext] || "application/octet-stream";
+        const mime = ext2mime[ext] ?? "application/octet-stream";
 
         return new Response(file.decompress(), {
           status: 200,
