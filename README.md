@@ -12,6 +12,12 @@ This project uses Module Service Workers in development mode. Currently this fea
 pnpm dev
 ```
 
+Preview command may be useful for debugging on other browsers.
+
+```sh
+pnpm preview
+```
+
 ### Edge function
 
 ```sh

@@ -8,6 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "test": "vitest",
+    "preview": "run-p -l preview:build preview:serve",
+    "preview:serve": "vite preview",
+    "preview:build": "vite build --mode development --watch",
     "build:fixture": "vite build src/fixture/src && cd src/fixture/src/dist && zip -r ../../test.zip ."
   },
   "license": "MIT",
@@ -24,6 +27,7 @@
     "@types/pako": "2.0.0",
     "@vitest/coverage-c8": "0.22.0",
     "c8": "7.12.0",
+    "npm-run-all": "4.1.5",
     "rollup": "2.78.0",
     "typescript": "4.7.4",
     "vite": "3.0.7",

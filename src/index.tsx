@@ -3,6 +3,13 @@ import { useEffect, useState } from "preact/hooks";
 import { pathToRegexp } from "path-to-regexp";
 import { artifactPath } from "./constants";
 
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js", {
+    type: import.meta.env.PROD ? "classic" : "module",
+    scope: "/",
+  });
+}
+
 const artifactPathRegex = pathToRegexp(artifactPath);
 
 const App = () => {
@@ -10,11 +17,7 @@ const App = () => {
 
   useEffect(() => {
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker
-        .register("/sw.js", {
-          type: import.meta.env.PROD ? "classic" : "module",
-          scope: "/",
-        })
+      navigator.serviceWorker.ready
         .then(() => {
           if (artifactPathRegex.test(window.location.pathname)) {
             location.reload();
