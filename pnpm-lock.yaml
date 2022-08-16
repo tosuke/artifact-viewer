@@ -9,7 +9,7 @@ specifiers:
   c8: 7.12.0
   pako: 2.0.4
   path-to-regexp: 6.2.1
-  preact: 10.10.2
+  preact: 10.10.3
   rollup: 2.78.0
   typescript: 4.7.4
   universal-router: 9.1.0
@@ -19,12 +19,12 @@ specifiers:
 dependencies:
   pako: 2.0.4
   path-to-regexp: 6.2.1
-  preact: 10.10.2
+  preact: 10.10.3
   universal-router: 9.1.0
 
 devDependencies:
   '@babel/core': 7.18.10
-  '@preact/preset-vite': 2.3.0_zhq4jwpp4fjocx4mib5viv4izu
+  '@preact/preset-vite': 2.3.0_lrvtee63jg24xrrblvpmw7ea4a
   '@types/node': 18.7.2
   '@types/pako': 2.0.0
   '@vitest/coverage-c8': 0.22.0
@@ -339,7 +339,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@preact/preset-vite/2.3.0_zhq4jwpp4fjocx4mib5viv4izu:
+  /@preact/preset-vite/2.3.0_lrvtee63jg24xrrblvpmw7ea4a:
     resolution: {integrity: sha512-0kOuz7wdrQLqrPlyI/Ypw9IWDF2++GGcOHMRBYO5T2w2+dheelaBH+XrIN/okqdsGIflzFIFNyIGubo5BC8wbQ==}
     peerDependencies:
       '@babel/core': 7.x
@@ -348,7 +348,7 @@ packages:
       '@babel/core': 7.18.10
       '@babel/plugin-transform-react-jsx': 7.18.10_@babel+core@7.18.10
       '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.18.10
-      '@prefresh/vite': 2.2.8_preact@10.10.2+vite@3.0.7
+      '@prefresh/vite': 2.2.8_preact@10.10.3+vite@3.0.7
       '@rollup/pluginutils': 4.2.1
       babel-plugin-transform-hook-names: 1.0.2_@babel+core@7.18.10
       debug: 4.3.4
@@ -364,19 +364,19 @@ packages:
     resolution: {integrity: sha512-fYAWbU1WDSLn108kKY4eDaaeUcnszFqXjgaGKYXNZ5NLulpRTpsrY+Sbfo9q8LDpWrBpqIgzjrwNnvglWI1xNQ==}
     dev: true
 
-  /@prefresh/core/1.3.4_preact@10.10.2:
+  /@prefresh/core/1.3.4_preact@10.10.3:
     resolution: {integrity: sha512-s7iNsnyJ3lZEUrYIgmVIB/hKtp4U6mdD91a31Zg7Q8M49O0x2KThrbrMQYraoDDrs4STdFB8Zv6bceUguOoX1A==}
     peerDependencies:
       preact: ^10.0.0
     dependencies:
-      preact: 10.10.2
+      preact: 10.10.3
     dev: true
 
   /@prefresh/utils/1.1.3:
     resolution: {integrity: sha512-Mb9abhJTOV4yCfkXrMrcgFiFT7MfNOw8sDa+XyZBdq/Ai2p4Zyxqsb3EgHLOEdHpMj6J9aiZ54W8H6FTam1u+A==}
     dev: true
 
-  /@prefresh/vite/2.2.8_preact@10.10.2+vite@3.0.7:
+  /@prefresh/vite/2.2.8_preact@10.10.3+vite@3.0.7:
     resolution: {integrity: sha512-yGGa+PKPYPTzMlxgQ8aBgxw9K69I8X4iQ0E6KOcIvls96WKqKLLOYZW9SUgCve446jpUXvc9udviPBZjCeZIIQ==}
     peerDependencies:
       preact: ^10.4.0
@@ -384,10 +384,10 @@ packages:
     dependencies:
       '@babel/core': 7.18.10
       '@prefresh/babel-plugin': 0.4.3
-      '@prefresh/core': 1.3.4_preact@10.10.2
+      '@prefresh/core': 1.3.4_preact@10.10.3
       '@prefresh/utils': 1.1.3
       '@rollup/pluginutils': 4.2.1
-      preact: 10.10.2
+      preact: 10.10.3
       vite: 3.0.7
     transitivePeerDependencies:
       - supports-color
@@ -1106,8 +1106,8 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
-  /preact/10.10.2:
-    resolution: {integrity: sha512-GUXSsfwq4NKhlLYY5ctfNE0IjFk7Xo4952yPI8yMkXdhzeQmQ+FahZITe7CeHXMPyKBVQ8SoCmGNIy9TSOdhgQ==}
+  /preact/10.10.3:
+    resolution: {integrity: sha512-Gwwh0o531izatQQZu0yEX4mtfxVYsZJ4TT/o2VK3UZ/UuAWAWFnzsEfpZvad32vY3TKoRnSY2WqiDz2rH/viWQ==}
 
   /require-directory/2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
