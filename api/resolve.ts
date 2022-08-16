@@ -8,9 +8,12 @@ const handler = async (request: Request) => {
   const repo = url.searchParams.get("repo");
   const id = url.searchParams.get("id");
 
-  return fetch(
-    `https://nightly.link/${owner}/${repo}/actions/artifacts/${id}.zip`
+  const res = await fetch(
+    `https://nightly.link/${owner}/${repo}/actions/artifacts/${id}.zip`,
+    { redirect: "manual" }
   );
+
+  return res;
 };
 
 export default handler;
