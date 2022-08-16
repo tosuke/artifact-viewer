@@ -16,7 +16,13 @@ const serviceWorkerPlugin = (src: string): Plugin[] => {
       },
       load(id) {
         if (id === "/sw.js") {
-          return `import "${src}";`;
+          return `
+            import "${src}";
+
+            location.reload = () => {
+              self.registration.update();
+            };
+          `;
         }
       },
     },
@@ -67,11 +73,19 @@ const serviceWorkerPlugin = (src: string): Plugin[] => {
   ];
 };
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     preact(),
     serviceWorkerPlugin(resolve(__dirname, "src/service-worker.ts")),
   ],
+  build: {
+    minify: mode !== "development" ? "esbuild" : false,
+    sourcemap: mode === "development",
+  },
+  esbuild: {
+    // suppress: [vite] warning: Top-level "this" will be replaced with undefined since this file is an ECMAScript module
+    logOverride: { "this-is-undefined-in-esm": "silent" },
+  },
   server: {
     proxy: {
       "/api": {
@@ -80,4 +94,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
