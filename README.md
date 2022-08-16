@@ -4,8 +4,6 @@ Serves GitHub Artifact as a Web page.
 
 ## How to development
 
-### Web app
-
 This project uses Module Service Workers in development mode. Currently this feature is supported only in Chromium based browsers.
 
 ```sh
@@ -16,10 +14,4 @@ Preview command may be useful for debugging on other browsers.
 
 ```sh
 pnpm preview
-```
-
-### Edge function
-
-```sh
-pnpx vercel dev
 ```
