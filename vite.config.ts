@@ -16,7 +16,13 @@ const serviceWorkerPlugin = (src: string): Plugin[] => {
       },
       load(id) {
         if (id === "/sw.js") {
-          return `import "${src}";`;
+          return `
+            import "${src}";
+
+            location.reload = () => {
+              self.registration.update();
+            };
+          `;
         }
       },
     },
