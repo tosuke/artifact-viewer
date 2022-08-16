@@ -19,6 +19,10 @@ app.get("/api/:owner/:repo/artifacts/:id/zip", (c) => {
   );
 });
 
+app.notFound((c) => {
+  return c.json({ error: "not-found" }, 404);
+});
+
 export default (req: Request) => app.fetch(req, process.env);
 
 if (process.env.DEV) {
