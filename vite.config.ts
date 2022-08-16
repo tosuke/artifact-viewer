@@ -82,6 +82,10 @@ export default defineConfig(({ mode }) => ({
     minify: mode !== "development" ? "esbuild" : false,
     sourcemap: mode === "development",
   },
+  esbuild: {
+    // suppress: [vite] warning: Top-level "this" will be replaced with undefined since this file is an ECMAScript module
+    logOverride: { "this-is-undefined-in-esm": "silent" },
+  },
   server: {
     proxy: {
       "/api": {
