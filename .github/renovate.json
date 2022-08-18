@@ -1,6 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base", ":semanticCommits"
+    "config:base", ":semanticCommits", "group:monorepos"
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["vitest", "@vitest/*"],
+      "groupName": "vitest monorepo"
+    }
   ]
 }
