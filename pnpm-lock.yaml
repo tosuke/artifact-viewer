@@ -7,7 +7,7 @@ specifiers:
   '@types/pako': 2.0.0
   '@vitest/coverage-c8': 0.22.1
   c8: 7.12.0
-  edge-runtime: 1.1.0-beta.26
+  edge-runtime: 1.1.0-beta.27
   esbuild: 0.15.5
   hono: 2.0.8
   npm-run-all: 4.1.5
@@ -34,7 +34,7 @@ devDependencies:
   '@types/pako': 2.0.0
   '@vitest/coverage-c8': 0.22.1
   c8: 7.12.0
-  edge-runtime: 1.1.0-beta.26
+  edge-runtime: 1.1.0-beta.27
   esbuild: 0.15.5
   npm-run-all: 4.1.5
   rollup: 2.78.0
@@ -295,18 +295,18 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@edge-runtime/format/1.1.0-beta.26:
-    resolution: {integrity: sha512-05wywSsBZVE1iMezvYXW1ZMak6y2riJPVmEDK9RW9BECazykJtYOOQ+GG+oVaicNfxh2YtQTQD/WaI/4K3yKWA==}
+  /@edge-runtime/format/1.1.0-beta.27:
+    resolution: {integrity: sha512-67ig1yISH1M7OHxS/PxgXbrQ99X8c47GFqP6qrDx+uWw1gBnknNHIykL3OgeIt4yk1OPKKHtrLe/Gnrw9Lc9tQ==}
     dev: true
 
-  /@edge-runtime/primitives/1.1.0-beta.26:
-    resolution: {integrity: sha512-SsbXbw2+bAHbcjAmT+e5WoADmU/yDO5glNFkYd/971Zo26cJoW/1W3n4IMm5gOtyvLHbezSRKt8t5GteX0wYdA==}
+  /@edge-runtime/primitives/1.1.0-beta.27:
+    resolution: {integrity: sha512-9RLySRgIfNhPXzqprwk5jojUec4WmVRphXIGgXmqZs/22UPF50mKcmrstPVVutGiX0mt4YkHuUarLj0VtLjX1Q==}
     dev: true
 
-  /@edge-runtime/vm/1.1.0-beta.26:
-    resolution: {integrity: sha512-hxWtmuO13zgNkM3zHvRENfMeavM+PAKSoHhvzt+sHjSothxGlA06XXN38t/NT6LD4ND8p8FmPJ70+fTptL4a/A==}
+  /@edge-runtime/vm/1.1.0-beta.27:
+    resolution: {integrity: sha512-1ua5EI3GXKDDdjF6+1CUi37rmpxXMSWItCCl5sIMLBaIaf2klgnVYzIFVXORvXp0fKh1N3jEcS+Ykkutg/uzaw==}
     dependencies:
-      '@edge-runtime/primitives': 1.1.0-beta.26
+      '@edge-runtime/primitives': 1.1.0-beta.27
     dev: true
 
   /@esbuild/linux-loong64/0.14.54:
@@ -672,12 +672,12 @@ packages:
       object-keys: 1.1.1
     dev: true
 
-  /edge-runtime/1.1.0-beta.26:
-    resolution: {integrity: sha512-2JZlxpISnRv3p0yh6Oo9QZF06lWcgJH0RMxVbJ5Az0Grde7B1PLw34oCIcOu23Zu7Icn4Lh2wojA6riq3jyDqg==}
+  /edge-runtime/1.1.0-beta.27:
+    resolution: {integrity: sha512-6Epw2VvkgQKNCZf1LpFdzrEpsSgnVAkLI3zGW5V7VduB8eNz5We/bpcNnFJTjGPUshhW+C5WxY7QNyioucMpDQ==}
     hasBin: true
     dependencies:
-      '@edge-runtime/format': 1.1.0-beta.26
-      '@edge-runtime/vm': 1.1.0-beta.26
+      '@edge-runtime/format': 1.1.0-beta.27
+      '@edge-runtime/vm': 1.1.0-beta.27
       exit-hook: 2.2.1
       http-status: 1.5.2
       mri: 1.2.0
