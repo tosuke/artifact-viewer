@@ -9,7 +9,7 @@ specifiers:
   c8: 7.12.0
   edge-runtime: 1.1.0-beta.27
   esbuild: 0.15.7
-  hono: 2.0.8
+  hono: 2.1.4
   npm-run-all: 4.1.5
   pako: 2.0.4
   path-to-regexp: 6.2.1
@@ -21,7 +21,7 @@ specifiers:
   vitest: 0.23.4
 
 dependencies:
-  hono: 2.0.8
+  hono: 2.1.4
   pako: 2.0.4
   path-to-regexp: 6.2.1
   preact: 10.11.0
@@ -1317,8 +1317,8 @@ packages:
       function-bind: 1.1.1
     dev: true
 
-  /hono/2.0.8:
-    resolution: {integrity: sha512-3alrHKESJqNJdlFUFcvAexEYe4Iiklu5Yn1qu0Lc4T2ZFSmF4Wl4OZS9b1mf7VIMJy9/gDdYhbg/lUKHkocOvQ==}
+  /hono/2.1.4:
+    resolution: {integrity: sha512-x4mNdB7YoMBMHe8rDyXgKcAjK4/lerUY4PBaEYu+XCz1AilxtZAKLDtUer4ptaZ4T6RYreo5ksZuA3bQdOUEug==}
     engines: {node: '>=11.0.0'}
     dev: false
 
