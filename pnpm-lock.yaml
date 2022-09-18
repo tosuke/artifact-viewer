@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@babel/core': 7.18.10
-  '@preact/preset-vite': 2.3.0
+  '@preact/preset-vite': 2.4.0
   '@types/node': 18.7.2
   '@types/pako': 2.0.0
   '@vitest/coverage-c8': 0.23.4
@@ -29,7 +29,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.18.10
-  '@preact/preset-vite': 2.3.0_ngeih4swi5dsdlxk6pyycl6z2m
+  '@preact/preset-vite': 2.4.0_ngeih4swi5dsdlxk6pyycl6z2m
   '@types/node': 18.7.2
   '@types/pako': 2.0.0
   '@vitest/coverage-c8': 0.23.4
@@ -370,8 +370,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@preact/preset-vite/2.3.0_ngeih4swi5dsdlxk6pyycl6z2m:
-    resolution: {integrity: sha512-0kOuz7wdrQLqrPlyI/Ypw9IWDF2++GGcOHMRBYO5T2w2+dheelaBH+XrIN/okqdsGIflzFIFNyIGubo5BC8wbQ==}
+  /@preact/preset-vite/2.4.0_ngeih4swi5dsdlxk6pyycl6z2m:
+    resolution: {integrity: sha512-EiUMHuiCThuTuK+eH2r5uDg+CJbbt4aWJGePuszrHuXUpRv6WAeO4S+/DTJsEHtPtGmPRR3cLQ68N5097eOSRA==}
     peerDependencies:
       '@babel/core': 7.x
       vite: 2.x || 3.x
