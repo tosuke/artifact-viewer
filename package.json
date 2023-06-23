@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "description": "",
-  "packageManager": "pnpm@7.17.0",
+  "packageManager": "pnpm@7.33.2",
   "scripts": {
     "dev": "vite",
     "build": "run-s build:web build:api",
