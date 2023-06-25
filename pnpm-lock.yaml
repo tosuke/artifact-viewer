@@ -6,7 +6,7 @@ specifiers:
   '@types/node': 18.7.2
   '@types/pako': 2.0.0
   '@vitest/coverage-c8': 0.23.4
-  c8: 7.12.0
+  c8: 7.14.0
   edge-runtime: 1.1.0-beta.31
   esbuild: 0.15.8
   hono: 2.2.1
@@ -33,7 +33,7 @@ devDependencies:
   '@types/node': 18.7.2
   '@types/pako': 2.0.0
   '@vitest/coverage-c8': 0.23.4
-  c8: 7.12.0
+  c8: 7.14.0
   edge-runtime: 1.1.0-beta.31
   esbuild: 0.15.8
   npm-run-all: 4.1.5
@@ -459,7 +459,7 @@ packages:
   /@vitest/coverage-c8/0.23.4:
     resolution: {integrity: sha512-jmD00a5DQH9gu9K+YdvVhcMuv2CzHvU4gCnySS40Ec5hKlXtlCzRfNHl00VnhfuBeaQUmaQYe60BLT413HyDdg==}
     dependencies:
-      c8: 7.12.0
+      c8: 7.14.0
       vitest: 0.23.4
     transitivePeerDependencies:
       - '@edge-runtime/vm'
@@ -533,8 +533,8 @@ packages:
       update-browserslist-db: 1.0.5_browserslist@4.21.3
     dev: true
 
-  /c8/7.12.0:
-    resolution: {integrity: sha512-CtgQrHOkyxr5koX1wEUmN/5cfDa2ckbHRA4Gy5LAL0zaCFtVWJS5++n+w4/sr2GWGerBxgTjpKeDclk/Qk6W/A==}
+  /c8/7.14.0:
+    resolution: {integrity: sha512-i04rtkkcNcCf7zsQcSv/T9EbUn4RXQ6mropeMcjFOsQXQ0iGLAr/xT6TImQg4+U9hmNpN9XdvPkjUL1IzbgxJw==}
     engines: {node: '>=10.12.0'}
     hasBin: true
     dependencies:
